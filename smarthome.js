@@ -92,7 +92,7 @@ SmartDevice.prototype.turnOff = function () {
 function Lamp(name) {
     SmartDevice.call(this, name);
     this.__brightness = 0;
-    this.__color = "white";
+    this.__color = null;
 }
 
 Lamp.prototype = Object.create(SmartDevice.prototype);
