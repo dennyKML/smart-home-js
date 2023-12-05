@@ -54,7 +54,7 @@ function Hub(name) {
 // Базовий клас для всіх компонентів розумного будинку
 function SmartDevice(name) {
     this.__name = name;
-    this.__isOn = false;  // Приватна властивість
+    this.__isOn = false;
 }
 
 // Геттери для приватних властивостей
@@ -91,8 +91,8 @@ SmartDevice.prototype.turnOff = function () {
 // Лампочка
 function Lamp(name) {
     SmartDevice.call(this, name);
-    this.__brightness = 0; // Приватна властивість
-    this.__color = "white"; // Приватна властивість
+    this.__brightness = 0;
+    this.__color = "white";
 }
 
 Lamp.prototype = Object.create(SmartDevice.prototype);
@@ -161,8 +161,8 @@ Lamp.prototype.setColor = function (color) {
 // Система безпеки
 function SecuritySystem(name) {
     SmartDevice.call(this, name);
-    this.__timerStart = null; // Приватна властивість
-    this.__totalWorkTime = 0; // Приватна властивість
+    this.__timerStart = null;
+    this.__totalWorkTime = 0;
 }
 
 SecuritySystem.prototype = Object.create(SmartDevice.prototype);
@@ -197,8 +197,8 @@ SecuritySystem.prototype.getWorkStatus = function () {
 // Електричний чайник
 function ElectricKettle(name, maxWaterVolume) {
     SmartDevice.call(this, name);
-    this.__maxWaterVolume = maxWaterVolume; // Приватна властивість
-    this.__currentWaterVolume = 0; // Приватна властивість
+    this.__maxWaterVolume = maxWaterVolume;
+    this.__currentWaterVolume = 0;
 }
 
 ElectricKettle.prototype = Object.create(SmartDevice.prototype);
@@ -248,8 +248,8 @@ ElectricKettle.prototype.setCurrentWaterVolume = function (volume) {
 // Телевізор
 function TV(name) {
     SmartDevice.call(this, name);
-    this.__isAppOpen = false; // Приватна властивість
-    this.__currentApp = null; // Приватна властивість
+    this.__isAppOpen = false;
+    this.__currentApp = null;
 }
 
 TV.prototype = Object.create(SmartDevice.prototype);
