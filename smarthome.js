@@ -54,7 +54,7 @@ function Hub(name) {
 // Базовий клас для всіх компонентів розумного будинку
 function SmartDevice(name) {
     this.__name = name;
-    this.__isOn = false;  // Приватна властивість
+    this.__isOn = false;
 }
 
 // Геттери для приватних властивостей
