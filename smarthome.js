@@ -85,6 +85,15 @@ SmartDevice.prototype.turnOff = function () {
     }
 };
 
+// Метод для виведення поточного стану девайсу
+SmartDevice.prototype.printCurrentState = function () {
+    if (this.__isOn) {
+        console.log("'" + this.__name + "' працює.");
+    } else {
+        console.log("'" + this.__name + "' виключений.");
+    }
+};
+
 // Компоненти розумного будинку, які успадковуються від SmartDevice
 
 
@@ -115,6 +124,14 @@ Lamp.prototype.turnOff = function () {
         console.log("'" + this.__name + "' виключено.");
     } else {
         console.log("'" + this.__name + "' вже виключений!");
+    }
+};
+
+Lamp.prototype.printCurrentState = function () {
+    if (this.__isOn) {
+        console.log("'" + this.__name + "' працює. Рівень свічіння: " + this.__brightness + "%. Колір свічіння: " + this.__color);
+    } else {
+        console.log("'" + this.__name + "' виключений.");
     }
 };
 
@@ -184,12 +201,12 @@ SecuritySystem.prototype.turnOff = function () {
     }
 };
 
-SecuritySystem.prototype.getWorkStatus = function () {
+SecuritySystem.prototype.printCurrentState = function () {
     if (this.__timerStart) {
         var elapsedTime = Date.now() - this.__timerStart;
         return "\n'" + this.__name + "' працює з моменту запуску: " + (elapsedTime / 1000) + " секунд.\n";
     } else {
-        return "'" + this.__name + "' не працює зараз.";
+        return "'" + this.__name + "' виключений.";
     }
 };
 
@@ -231,6 +248,14 @@ ElectricKettle.prototype.turnOff = function () {
     }
 };
 
+ElectricKettle.prototype.printCurrentState = function () {
+    if (this.__isOn) {
+        console.log("'" + this.__name + "' працює. Рівень води: " + this.__currentWaterVolume + " мл. Максимальна дозволена кількість води: " + this.__maxWaterVolume);
+    } else {
+        console.log("'" + this.__name + "' виключений.");
+    }
+};
+
 ElectricKettle.prototype.setCurrentWaterVolume = function (volume) {
     if (!this.__isOn) {
         if (volume <= this.__maxWaterVolume && volume >= 0) {
@@ -254,6 +279,14 @@ function TV(name) {
 
 TV.prototype = Object.create(SmartDevice.prototype);
 TV.prototype.constructor = TV;
+
+TV.prototype.printCurrentState = function () {
+    if (this.__isOn) {
+        console.log("'" + this.__name + "' працює. Чи відкрито додаток: " + this.__isAppOpen + ". Якщо відкрито, то який: " + this.__currentApp);
+    } else {
+        console.log("'" + this.__name + "' виключений.");
+    }
+};
 
 TV.prototype.openApp = function (appName) {
     if (this.__isOn) {
