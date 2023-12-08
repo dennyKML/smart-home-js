@@ -140,8 +140,8 @@ Lamp.prototype.setTimer = function (time, callback) {
         var that = this;
         console.log("Було встановлено таймер роботи для '" + that.__name + "' на " + time + " секунд.");
         setTimeout(function () {
-            callback(null, "\nЛампочка '" + that.__name + "' усіпшно пропрацювала " + time + " секунди і виключилася.");
             that.turnOff();
+            callback(null, "\nЛампочка '" + that.__name + "' усіпшно пропрацювала " + time + " секунди і виключилася.");
         }, time * 1000);
     } else {
         callback("Лампочка '" + this.__name + "' не працює!");
@@ -358,13 +358,14 @@ sh.getDeviceByName("Mi Smart RGB").setTimer(4, function (error, data) {
     }
 });
 sh.getDeviceByName("Mi Smart RGB").setColor("blue");
+sh.getDeviceByName("Mi Smart RGB").printCurrentState();
 sh.getDeviceByName("Mi Smart RGB").setBrightness(100);
 // sh.getDeviceByName("Mi Smart RGB").setBrightness(0);
 
 console.log();
 sh.getDeviceByName("Ajax Security System").turnOn();
 setTimeout(function () {
-    sh.getDeviceByName("Ajax Security System").getWorkStatus();
+    sh.getDeviceByName("Ajax Security System").printCurrentState();
 }, 5000);
 setTimeout(function () {
     sh.getDeviceByName("Ajax Security System").turnOff();
